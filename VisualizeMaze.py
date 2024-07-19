@@ -9,8 +9,10 @@ def view_binary_maze(maze):
     plt.show()
 
 
+
+
 if __name__ == '__main__':
-    A = [[1,1,1], 
+    A = [[1,"1",1], 
          [0,1,0], 
          [1,0,1]]
     print(view_binary_maze(A))
