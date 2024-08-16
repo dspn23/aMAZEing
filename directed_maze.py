@@ -109,9 +109,17 @@ class DirectedMaze:
 
     def col(self, x: int) -> list:
         """returns the desired column"""
+        if x <= 0:
+            raise ValueError("col parameter should be a positive integer")
+        if not isinstance(x, int):
+            raise TypeError("col parameter should be a positive integer")
         return [row[x-1] for row in self.list]
     def row(self, x: int) -> list:
         """returns the desired row"""
+        if x <= 0:
+            raise ValueError("col parameter should be a positive integer")
+        if not isinstance(x, int):
+            raise TypeError("col parameter should be a positive integer")
         return self.list[x-1]
 
     def __is_cell_in_range(self, row, col):

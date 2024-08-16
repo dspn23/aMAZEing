@@ -110,12 +110,13 @@ class TestDirectedMaze(unittest.TestCase):
         self.assertEqual(B.row(1), ["A", "B"])
         self.assertEqual(B.row(5), ["K", "L"])
 
-        # TODO: this should be an IndexError instead of this:
-        self.assertEqual(A.row(0), ["E", "E", "R"])
-        self.assertEqual(A.row(-2), ["E", "E", "S"])
+        self.assertRaises(ValueError, A.row, 0)
+        self.assertRaises(ValueError, A.row, -2)
 
-        self.assertEqual(B.row(0), ["K", "L"])
-        self.assertEqual(B.row(-2), ["E", "F"])
+        self.assertRaises(ValueError, B.row, 0)
+        self.assertRaises(ValueError, B.row, -2)
+
+        self.assertRaises(TypeError, B.row, "2")
 
     def test_col(self):
         A = DM(3, 3)
@@ -139,12 +140,13 @@ class TestDirectedMaze(unittest.TestCase):
         self.assertEqual(B.col(1), ["A", "C", "E", "G", "K"])
         self.assertEqual(B.col(2), ["B", "D", "F", "H", "L"])
 
-        # TODO: this should be an IndexError instead of this:
-        self.assertEqual(A.col(0), ["S", "S", "R"])
-        self.assertEqual(A.col(-2), ["E", "E", "E"])
+        self.assertRaises(ValueError, A.col, 0)
+        self.assertRaises(ValueError, A.col, -2)
 
-        self.assertEqual(B.col(0), ["B", "D", "F", "H", "L"])
-        self.assertEqual(B.col(-1), ["A", "C", "E", "G", "K"])
+        self.assertRaises(ValueError, B.col, 0)
+        self.assertRaises(ValueError, B.col, -2)
+
+        self.assertRaises(TypeError, B.col, "2")
 
     def test___is_cell_in_range(self):
         A = DM(3, 3)
